@@ -1,0 +1,99 @@
+.aurora-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  mix-blend-mode: plus-lighter;
+  opacity: var(--aurora-opacity, 1);
+
+  --aurora-light: color-mix(in srgb, var(--aurora-base) 55%, white);
+  --aurora-dark: color-mix(in srgb, var(--aurora-base) 75%, black);
+
+  /* blob 색도 baseColor 기반으로 파생 */
+  --blob-core: color-mix(in srgb, var(--aurora-base) 30%, white);
+  --blob-mid: color-mix(in srgb, var(--aurora-base) 75%, white);
+  --blob-edge: color-mix(in srgb, var(--aurora-base) 40%, black);
+}
+
+.aurora-column {
+  position: absolute;
+  bottom: 15%;
+  left: var(--xpos);
+  width: var(--width);
+  height: 60%;
+
+  transform-origin: bottom center;
+  animation: aurora-flow 14s ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+
+  filter: blur(0px);
+  opacity: 0.1;
+
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 10%,
+    var(--aurora-light) 32%,
+    var(--aurora-base) 55%,
+    var(--aurora-dark) 78%,
+    transparent 100%
+  );
+}
+
+@keyframes aurora-flow {
+  0% {
+    transform: translateX(0) scaleX(1) scaleY(var(--scaleY));
+  }
+  50% {
+    transform: translateX(-2%) scaleX(1.1) scaleY(calc(var(--scaleY) * 1.08));
+  }
+  100% {
+    transform: translateX(1%) scaleX(0.9) scaleY(calc(var(--scaleY) * 1.02));
+  }
+}
+
+/* 🌫 가운데 일렁이는 빛 덩이 */
+.light-blob {
+  position: absolute;
+  top: var(--blob-top, 50%);
+  left: var(--blob-left, 25%);
+  width: 60vw;
+  height: 50vh;
+  border-radius: 100%;
+
+  /* baseColor 기반 그라디언트 */
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--blob-core) 100%, transparent) 0%,
+    color-mix(in srgb, var(--blob-mid) 100%, transparent) 40%,
+    color-mix(in srgb, var(--blob-edge) 100%, transparent) 60%,
+    transparent 100%
+  );
+
+  filter: blur(35px);
+  opacity: 0.33;
+
+  /* scale/딜레이도 변수로 제어 */
+  transform: translate(-50%, -50%) scale(var(--blob-scale, 1));
+  animation: blobFloat 9s ease-in-out infinite alternate;
+  animation-delay: var(--blob-delay, 0s);
+}
+
+@keyframes blobFloat {
+  0% {
+    transform: translate(-50%, -50%) scale(calc(var(--blob-scale, 1) * 1));
+    opacity: 0.1;
+  }
+  35% {
+    transform: translate(-52%, -48%) scale(calc(var(--blob-scale, 1) * 1.06));
+    opacity: 0.33;
+  }
+  70% {
+    transform: translate(-48%, -52%) scale(calc(var(--blob-scale, 1) * 1.1));
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(calc(var(--blob-scale, 1) * 1.03));
+    opacity: 0.2;
+  }
+}

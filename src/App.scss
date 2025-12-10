@@ -1,0 +1,51 @@
+    .title{
+        position: absolute;
+        bottom: 5vh;
+        pointer-events: none;
+            font-family: "Playwrite NO", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+            color: #a51414;
+            z-index: 15;
+            font-size: 5vw;
+            line-height: 130%;
+            opacity: 0;
+            padding-left: 1vw;
+
+
+        &.on{
+          animation: titleOn 8s forwards ease-in-out;
+        }
+        
+
+    }
+
+
+.endTitle{
+  position: fixed;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  color: #a51414;
+  z-index: 201;
+              font-family: "Playwrite NO", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 5vw;
+  opacity: 0;
+  pointer-events: none;
+   &.on{
+          animation: titleOn 8s forwards ease-in-out;
+        }
+}
+    
+    @keyframes titleOn {
+      0%{ opacity: 0;}
+      20%{opacity: 1;}
+      80%{opacity: 1;}
+      100%{opacity: 0;}
+    }
+
+

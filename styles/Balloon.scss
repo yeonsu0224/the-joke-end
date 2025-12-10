@@ -1,0 +1,87 @@
+.Balloon {
+  cursor: pointer;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  height: auto;
+  width: 10vw;
+  animation: float 3s ease-in-out infinite;
+  &.off {
+    // 필요하면 페이드아웃
+  }
+
+  &.ask{
+    left: 20%;
+    top: 50%;
+  }
+
+  &.beer{
+        
+    top: 20%;
+    left: 70%;
+    width: 15vw;
+  }
+    &.mouse{
+        left: 20%;
+    top: 70%;
+    width: 12vw;
+  }
+
+  // 선 굵기: path 뿐만 아니라 line / polyline 도
+  path,
+  line,
+  polyline {
+    stroke-width: 10px;
+    stroke: aliceblue; // 기본 컬러(필요에 따라 조정)
+  }
+}
+
+/* ask: path 들 */
+#askSvg path {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+
+/* beer: polyline/line 들 */
+#beerSvg .cls-1 {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+
+/* mouse: polyline/line 들 */
+#mouseSvg .cls-1 {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* on 상태일 때 애니메이션 */
+
+.Balloon.on #askSvg path {
+  animation: balloon-draw 5s cubic-bezier(0.18, 0.75, 0.37, 0.89) forwards;
+}
+
+.Balloon.on #beerSvg .cls-1 {
+  animation: balloon-draw 5s cubic-bezier(0.18, 0.75, 0.37, 0.89) forwards;
+}
+
+.Balloon.on #mouseSvg .cls-1 {
+  animation: balloon-draw 5s cubic-bezier(0.18, 0.75, 0.37, 0.89) forwards;
+}
+
+@keyframes balloon-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

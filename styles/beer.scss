@@ -1,0 +1,113 @@
+.beer {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 200;
+  width: 20vw;
+  cursor: pointer;
+
+  // 메인 잔 라인
+  .main-glass {
+    position: absolute;
+    transform: translate(0%, 30%);
+    width: 70%;
+    opacity: 1;
+    transition: opacity 1.5s ease-out;
+
+    &.cheers{
+animation: cheers-main 1s 2s ease-in-out forwards;
+    }
+
+    path {
+      stroke-linecap: butt;        
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;        
+      animation: glass-draw 1.8s 1s ease-out forwards;
+    }
+
+
+    &.done{
+        opacity: 0;
+    }
+  }
+
+  .sub-glass{
+    position: absolute;
+    transform: translate(100%, 30%);
+    width: 70%;
+    animation: cheers-sub 1s 2s ease-in-out forwards;
+    path {
+      stroke-linecap: butt;        
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;        
+      animation: glass-draw 1.8s ease-out forwards;
+    }
+
+  }
+
+.beer {
+  position: absolute;
+  transform: translate(25%, -35%);
+  left: 0;
+  width: 40%;
+      opacity: 1;
+    transition: opacity 1.5s ease-out;
+
+        &.done{
+        opacity: 0;
+    }
+
+
+  path {
+    stroke-linecap: round;
+
+    /* 처음 상태: 전체를 숨김 */
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+
+    animation: beer-follow 2s ease-out forwards;
+  }
+}}
+
+@keyframes cheers-sub{
+    0% {transform: translate(100%, 30%) rotate(0deg);}
+    40% {transform: translate(110%, 30%) rotate(-1deg);}
+    60% {transform: translate(88%, 30%) rotate(-1deg);}
+    63% {transform: translate(90%, 30%) rotate(0deg);}
+    70% {transform: translate(90%, 30%) rotate(0deg); opacity: 1;}
+    100% {transform: translate(90%, 30%) rotate(0deg); opacity: 0;}
+}
+
+@keyframes cheers-main{
+    0% {transform: translate(0%, 30%) rotate(0deg);}
+    40% {transform: translate(0%, 30%) rotate(1deg);}
+    60% {transform: translate(0%, 30%) rotate(1deg);}
+    63% {transform: translate(0%, 30%) rotate(0deg);}
+    70% {transform: translate(0%, 30%) rotate(0deg); }
+    100% {transform: translate(0%, 30%) rotate(0deg); }
+}
+
+@keyframes beer-follow {
+  /* 0%: 안 보임 */
+  0% {
+    stroke-dasharray: 0 1;
+    stroke-dashoffset: 1;
+  }
+
+
+
+  /* 100%: 아래쪽 30%만 남고, 위쪽은 사라짐 */
+  100% {
+    stroke-dasharray: 0.8 0.2;  /* 보이는 길이 = 100% */
+    stroke-dashoffset: 0.6;
+  }
+}
+// 잔 그리기
+@keyframes glass-draw {
+  to {
+    stroke-dashoffset: 0.22; // 0이 되면서 전체가 그려짐
+  }
+}
+
+
