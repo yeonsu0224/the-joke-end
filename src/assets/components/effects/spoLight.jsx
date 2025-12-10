@@ -324,7 +324,7 @@ export function QuadShape({
         ref={micImgRef}
         className="MicImg"
         alt="마이크그림자"
-        src="/images/micShadowA.png"
+        src="images/micShadowA.png"
         style={{
           position: "fixed",
           left: "0px",
@@ -341,7 +341,7 @@ export function QuadShape({
         ref={micMainRef}
         className="MicImg A"
         alt="마이크"
-        src="/images/micA.png"
+        src="images/micA.png"
           style={{
     position: "fixed",
     transform: "translate(-95%, -70%)",
@@ -360,7 +360,7 @@ export function QuadShape({
         ref={micImgRef}
         className="MicImg"
         alt="마이크그림자"
-        src="/images/micShadowB.png"
+        src="images/micShadowB.png"
         style={{
           position: "fixed",
           left: "0px",
@@ -377,7 +377,7 @@ export function QuadShape({
           ref={micMainRef}
         className="MicImg B"
         alt="마이크"
-        src="/images/micB.png"
+        src="images/micB.png"
                  style={{
             position: "fixed",
             transform: "translate(-90%, -95%)",

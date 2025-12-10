@@ -27,7 +27,7 @@ export function EffectSoundPlayer({ src, loop = false, volume = 1 }) {
 
     if (!src) return;
 
-    audio.src = `/audios/effects/${src}.mp3`;
+    audio.src = `audios/effects/${src}.mp3`;
     audio.loop = loop;
     audio.volume = volume;
     audio.currentTime = 0;
@@ -84,7 +84,7 @@ function VoicePlayer({ src, audioRef, onDurationChange, hasUserInteracted }) {
     play();
   }, [src, audioRef, hasUserInteracted]);
 
-  return <audio ref={audioRef} src={`/audios/voices/${src}.mp3`} />;
+  return <audio ref={audioRef} src={`audios/voices/${src}.mp3`} />;
 }
 
 const AUTO_FLOW = {

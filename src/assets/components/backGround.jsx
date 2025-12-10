@@ -51,7 +51,7 @@ export default function BackGround({ nextStep, jokeStep }) {
 />
 
 
-        <img className={`stageImg ${(jokeStep==="intro" || jokeStep==="start"|| jokeStep==="end-truth" || jokeStep==="ending") ? "":"up" }`} alt="무대 일러스트" src="/images/Stage.png" />
+        <img className={`stageImg ${(jokeStep==="intro" || jokeStep==="start"|| jokeStep==="end-truth" || jokeStep==="ending") ? "":"up" }`} alt="무대 일러스트" src="images/Stage.png" />
       </div>
     </div>
   );
